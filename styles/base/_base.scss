@@ -1,0 +1,28 @@
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: 100%;
+	block-size: -webkit-fill-available;
+}
+
+body {
+	color: var(--cl--grey10);
+	font-family: var(--ff--main);
+	font-weight: var(--fw--regular);
+	font-size: var(--fs--14);
+	line-height: var(--lh--20);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}

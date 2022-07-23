@@ -10,7 +10,9 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main></main>
+			<main>
+				<h1>Tesla - clone</h1>
+			</main>
 		</div>
 	);
 };
