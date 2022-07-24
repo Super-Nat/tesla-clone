@@ -1,8 +1,20 @@
+import { useSelector } from "react-redux";
+
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../public/images/tesla_logo.svg";
+import NavbarList from "./NavbarList";
+
+interface RootState {
+	header: {
+		middleNav: { title: string; link: string }[];
+		lastNav: { title: string; link: string }[];
+	};
+}
 
 const Header = () => {
+	const middleNav = useSelector((state: RootState) => state.header.middleNav);
+	const lastNav = useSelector((state: RootState) => state.header.lastNav);
 	return (
 		<header>
 			<div className="header__wrap">
@@ -14,21 +26,10 @@ const Header = () => {
 					</Link>
 				</div>
 				<div className="header__nav">
-					<ul>
-						<li>Model S</li>
-						<li>Model 3</li>
-						<li>Model X</li>
-						<li>Model Y</li>
-						<li>Solar Roof</li>
-						<li>Solar Panels</li>
-					</ul>
+					<NavbarList navList={middleNav} />
 				</div>
 				<div className="header__nav">
-					<ul>
-						<li>Shop</li>
-						<li>Account</li>
-						<li>Menu</li>
-					</ul>
+					<NavbarList navList={lastNav} />
 				</div>
 			</div>
 		</header>

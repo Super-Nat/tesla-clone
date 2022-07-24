@@ -1,0 +1,13 @@
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	.footer {
+		&__wrap {
+			height: 7rem;
+			font-size: var(--fs--12);
+			color: var(--cl--grey30);
+		}
+	}
+}
