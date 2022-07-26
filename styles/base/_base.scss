@@ -12,6 +12,7 @@ html {
 	font-size: 62.5%;
 	-webkit-text-size-adjust: 100%;
 	block-size: -webkit-fill-available;
+	overflow: hidden;
 }
 
 body {
@@ -20,6 +21,15 @@ body {
 	font-weight: var(--fw--regular);
 	font-size: var(--fs--14);
 	line-height: var(--lh--20);
+}
+
+main {
+	overflow-y: scroll;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	scroll-snap-type: y mandatory;
 }
 
 a {

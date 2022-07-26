@@ -6,9 +6,9 @@ interface props {
 		link: string;
 	}[];
 }
-const NavbarList = (props: props) => {
+const NavbarList: React.FC<props> = (props) => {
 	return (
-		<ul className="nav-list">
+		<>
 			{props.navList.map((item, index) => (
 				<li key={index} className={item.link ? "has-link" : ""}>
 					{item.link ? (
@@ -20,7 +20,7 @@ const NavbarList = (props: props) => {
 					)}
 				</li>
 			))}
-		</ul>
+		</>
 	);
 };
 

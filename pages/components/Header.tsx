@@ -1,20 +1,21 @@
-import { useSelector } from "react-redux";
+import { toggleMenu } from "../../store/menu";
 
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../public/images/tesla_logo.svg";
 import NavbarList from "./NavbarList";
-
-interface RootState {
-	header: {
-		middleNav: { title: string; link: string }[];
-		lastNav: { title: string; link: string }[];
-	};
-}
+import { useAppDispatch, useAppSelector } from "../../hooks/typeHook";
 
 const Header = () => {
-	const middleNav = useSelector((state: RootState) => state.header.middleNav);
-	const lastNav = useSelector((state: RootState) => state.header.lastNav);
+	const middleNav = useAppSelector((state) => state.header.middleNav);
+	const lastNav = useAppSelector((state) => state.header.lastNav);
+
+	const dispatch = useAppDispatch();
+
+	const menuHandler = () => {
+		dispatch(toggleMenu());
+	};
+
 	return (
 		<header>
 			<div className="header__wrap">
@@ -26,10 +27,17 @@ const Header = () => {
 					</Link>
 				</div>
 				<div className="header__nav">
-					<NavbarList navList={middleNav} />
+					<ul className="nav-list">
+						<NavbarList navList={middleNav} />
+					</ul>
 				</div>
 				<div className="header__nav">
-					<NavbarList navList={lastNav} />
+					<ul className="nav-list">
+						<NavbarList navList={lastNav} />
+						<li className="has-link" onClick={menuHandler}>
+							Menu
+						</li>
+					</ul>
 				</div>
 			</div>
 		</header>
