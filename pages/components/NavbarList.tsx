@@ -9,7 +9,7 @@ interface props {
 const NavbarList: React.FC<props> = (props) => {
 	return (
 		<>
-			{props.navList.map((item, index) => (
+			{props.navList?.map((item, index) => (
 				<li key={index} className={item.link ? "has-link" : ""}>
 					{item.link ? (
 						<Link href={item.link}>

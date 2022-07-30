@@ -29,9 +29,9 @@ const Content = (props: props) => {
 							},
 						}}
 					>
-						{props.title.title}
+						{props.title?.title}
 					</motion.h1>
-					{props.title.desc && (
+					{props.title?.desc && (
 						<motion.p
 							initial={{ y: 40, opacity: 0 }}
 							animate={{
@@ -46,8 +46,8 @@ const Content = (props: props) => {
 							}}
 						>
 							{props.title.desc}{" "}
-							<Link href={props.title.link}>
-								<a>{props.title.linkTitle}</a>
+							<Link href={props.title?.link}>
+								<a>{props.title?.linkTitle}</a>
 							</Link>
 						</motion.p>
 					)}
@@ -67,9 +67,9 @@ const Content = (props: props) => {
 							},
 						}}
 					>
-						{props.title.btn1}
+						{props.title?.btn1}
 					</motion.button>
-					{props.title.btn2 && (
+					{props.title?.btn2 && (
 						<motion.button
 							initial={{ x: 40, opacity: 0 }}
 							animate={{
@@ -83,7 +83,7 @@ const Content = (props: props) => {
 								},
 							}}
 						>
-							{props.title.btn2}
+							{props.title?.btn2}
 						</motion.button>
 					)}
 				</div>
