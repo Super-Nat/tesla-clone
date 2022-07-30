@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type initialState = {
+interface initialState {
 	isOpen: boolean;
-};
+}
 
 const initialState: initialState = {
 	isOpen: false,

@@ -1,28 +1,94 @@
+import { motion, useTransform, useViewportScroll } from "framer-motion";
 import Link from "next/link";
 
 interface props {
-	title: string;
+	title: {
+		title: string;
+		desc: string;
+		link: string;
+		linkTitle: string;
+		btn1: string;
+		btn2: string;
+	};
 }
 
-const Content: React.FC<props> = (props) => {
+const Content = (props: props) => {
 	return (
-		<div className="content">
+		<motion.div className="content">
 			<div className="content__wrapper">
 				<div>
-					<h1>{props.title}</h1>
-					<p>
-						Order Online for{" "}
-						<Link href="/">
-							<a>Touchless Delivery</a>
-						</Link>
-					</p>
+					<motion.h1
+						initial={{ y: 40, opacity: 0 }}
+						animate={{
+							y: 0,
+							opacity: 1,
+							transition: {
+								type: "tween",
+								duration: 0.5,
+								ease: "easeInOut",
+							},
+						}}
+					>
+						{props.title.title}
+					</motion.h1>
+					{props.title.desc && (
+						<motion.p
+							initial={{ y: 40, opacity: 0 }}
+							animate={{
+								y: 0,
+								opacity: 1,
+								transition: {
+									type: "tween",
+									duration: 0.5,
+									delay: 0.7,
+									ease: "easeInOut",
+								},
+							}}
+						>
+							{props.title.desc}{" "}
+							<Link href={props.title.link}>
+								<a>{props.title.linkTitle}</a>
+							</Link>
+						</motion.p>
+					)}
 				</div>
 				<div>
-					<button className="primary">Custom Order</button>
-					<button>Existing Inventory</button>
+					<motion.button
+						className="primary"
+						initial={{ x: -40, opacity: 0 }}
+						animate={{
+							x: 0,
+							opacity: 1,
+							transition: {
+								type: "tween",
+								duration: 0.5,
+								delay: 0.7,
+								ease: "easeInOut",
+							},
+						}}
+					>
+						{props.title.btn1}
+					</motion.button>
+					{props.title.btn2 && (
+						<motion.button
+							initial={{ x: 40, opacity: 0 }}
+							animate={{
+								x: 0,
+								opacity: 1,
+								transition: {
+									type: "tween",
+									duration: 0.5,
+									delay: 0.7,
+									ease: "easeInOut",
+								},
+							}}
+						>
+							{props.title.btn2}
+						</motion.button>
+					)}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type initialState = {
+interface initialState {
 	home: {
 		desktopLHD: string;
 		mobileLHD: string;
 	}[];
-};
+}
 
 const initialState: initialState = {
 	home: [

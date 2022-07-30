@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type initialState = {
+interface initialState {
 	footerNav: {
 		title: string;
 		link: string;
 	}[];
-};
+}
 
 const initialState: initialState = {
 	footerNav: [

@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useScroll, Variants } from "framer-motion";
 import Content from "./Content";
 
 interface props {
@@ -5,11 +7,33 @@ interface props {
 		desktopLHD: string;
 		mobileLHD: string;
 	};
-	title: string;
+	page: {
+		title: string;
+		desc: string;
+		link: string;
+		linkTitle: string;
+	};
 }
 const Section: React.FC<props> = (props) => {
+	const ref = useRef(null);
+	// const { scrollYProgress } = useScroll({
+	// 	target: ref,
+	// });
+	const sectionVariants: Variants = {
+		offscreen: {
+			opacity: 0,
+		},
+		onscreen: {
+			opacity: 1,
+		},
+	};
 	return (
-		<section className="section--full">
+		<motion.section
+			className="section--full"
+			initial="offscreen"
+			whileInView="onscreen"
+			viewport={{ once: false, amount: 0.7 }}
+		>
 			<picture>
 				<source srcSet={props.imageBg.mobileLHD} media="(max-width: 599px)" />
 				<source srcSet={props.imageBg.desktopLHD} media="(min-width: 600px)" />
@@ -19,9 +43,10 @@ const Section: React.FC<props> = (props) => {
 				/>
 				<img src={props.imageBg.desktopLHD} alt="Flowers" />
 			</picture>
-
-			<Content title={props.title} />
-		</section>
+			<motion.div variants={sectionVariants}>
+				<Content title={props.page} />
+			</motion.div>
+		</motion.section>
 	);
 };
 export default Section;

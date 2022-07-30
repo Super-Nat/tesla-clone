@@ -3,6 +3,7 @@ import header from "./header";
 import footer from "./footer";
 import image from "./image";
 import menu from "./menu";
+import page from "./page";
 
 const store = configureStore({
 	reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
 		footer: footer.reducer,
 		image: image.reducer,
 		menu: menu,
+		page: page,
 	},
 });
 

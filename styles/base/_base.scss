@@ -1,5 +1,6 @@
 * {
 	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
 }
 
 html,
@@ -10,10 +11,7 @@ body {
 
 html {
 	font-size: 62.5%;
-	-webkit-text-size-adjust: 100%;
-	block-size: -webkit-fill-available;
-	overflow: hidden;
-	// scroll-behavior: smooth;
+	scroll-snap-type: y mandatory;
 }
 
 body {
@@ -26,12 +24,14 @@ body {
 }
 
 main {
-	overflow-y: scroll;
+	// overflow-y: scroll;
 	height: 100vh;
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	scroll-snap-type: y mandatory;
+
+	position: relative;
+	z-index: 1;
 }
 
 a {

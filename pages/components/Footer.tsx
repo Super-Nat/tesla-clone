@@ -12,7 +12,7 @@ const Footer = (props: any) => {
 		exit: { opacity: 0 },
 	};
 
-	console.log(props.touchBottom);
+	// console.log(props.touchBottom);
 
 	return (
 		<>

@@ -1,32 +1,21 @@
+import { useState } from "react";
 import type { NextPage } from "next";
-import { Fragment, useRef, useState } from "react";
-import { useAppSelector } from "../hooks/typeHook";
-
 import Head from "next/head";
+
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Section from "./components/Section";
 import Menu from "./components/Menu";
 
+import { useAppSelector } from "../hooks/typeHook";
+
 const Home: NextPage = () => {
 	const imageHome = useAppSelector((state) => state.image.home);
-	const title = useAppSelector((state) => state.header.middleNav);
-	const scrollContainer = useRef(null);
+	const page = useAppSelector((state) => state.page.page);
 	const [isBottom, setIsBottom] = useState(false);
 
-	const onScroll = () => {
-		const { scrollTop, scrollHeight, clientHeight }: any =
-			scrollContainer.current;
-
-		if (scrollTop >= scrollHeight - clientHeight - 300) {
-			setIsBottom(true);
-		} else {
-			setIsBottom(false);
-		}
-	};
-
 	return (
-		<Fragment>
+		<>
 			<Head>
 				<title>Tesla | clone</title>
 				<meta
@@ -42,14 +31,14 @@ const Home: NextPage = () => {
 			<Menu />
 			<Header />
 
-			<main role="main" ref={scrollContainer} onScroll={onScroll}>
+			<main role="main">
 				{imageHome.map((image, index) => (
-					<Section key={index} imageBg={image} title={title[index]?.title} />
+					<Section key={index} imageBg={image} page={page[index]} />
 				))}
 			</main>
 
 			<Footer touchBottom={isBottom} />
-		</Fragment>
+		</>
 	);
 };
 
