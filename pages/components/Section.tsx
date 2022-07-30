@@ -1,10 +1,13 @@
+import Content from "./Content";
+
 interface props {
 	imageBg: {
 		desktopLHD: string;
 		mobileLHD: string;
 	};
+	title: string;
 }
-const Section = (props: props) => {
+const Section: React.FC<props> = (props) => {
 	return (
 		<section className="section--full">
 			<picture>
@@ -16,6 +19,8 @@ const Section = (props: props) => {
 				/>
 				<img src={props.imageBg.desktopLHD} alt="Flowers" />
 			</picture>
+
+			<Content title={props.title} />
 		</section>
 	);
 };

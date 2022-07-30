@@ -1,0 +1,14 @@
+button {
+	background-color: var(--cl--grey60);
+	min-width: 26rem;
+	border: none;
+	border-radius: 10rem;
+	height: 4rem;
+	margin: 0 1rem;
+	text-transform: uppercase;
+	cursor: pointer;
+	&.primary {
+		background-color: var(--cl--grey20);
+		color: var(--cl--white);
+	}
+}

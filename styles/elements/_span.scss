@@ -1,0 +1,23 @@
+span {
+	&.menu-btn {
+		display: none;
+		cursor: pointer;
+		font-weight: var(--fw--semi-bold);
+		position: relative;
+		padding: 0.6rem 1.6rem;
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: var(--cl--blur);
+			border-radius: 1.2rem;
+			z-index: -1;
+		}
+		@media screen and (max-width: $mq-lg) {
+			display: block;
+		}
+	}
+}

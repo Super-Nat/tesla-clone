@@ -10,6 +10,12 @@ ul {
 		font-weight: var(--fw--semi-bold);
 		height: 100%;
 		user-select: none;
+		&.mobile {
+			@media screen and (max-width: $mq-lg) {
+				display: none;
+			}
+		}
+
 		li {
 			padding: 0.6rem 1.6rem;
 			position: relative;

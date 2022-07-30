@@ -1,0 +1,4 @@
+h1 {
+	@include clamp-cal(100rem, 192rem, 3.2rem, 4rem);
+	font-weight: var(--fw--semi-bold);
+}

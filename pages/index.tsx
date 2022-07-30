@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useRef, useState } from "react";
 import { useAppSelector } from "../hooks/typeHook";
-import { useScroll } from "framer-motion";
 
 import Head from "next/head";
 import Footer from "./components/Footer";
@@ -11,19 +10,20 @@ import Menu from "./components/Menu";
 
 const Home: NextPage = () => {
 	const imageHome = useAppSelector((state) => state.image.home);
-	const ref = useRef(null);
-	const { scrollYProgress } = useScroll({ target: ref });
+	const title = useAppSelector((state) => state.header.middleNav);
+	const scrollContainer = useRef(null);
+	const [isBottom, setIsBottom] = useState(false);
 
-	useEffect(() => {
-		scrollYProgress.onChange((latest) => {
-			console.log(latest);
+	const onScroll = () => {
+		const { scrollTop, scrollHeight, clientHeight }: any =
+			scrollContainer.current;
 
-			// latest >=
-			// document.getElementById("main")?.offsetHeight - window.innerHeight - 400
-			// 	? setIsOpen(true)
-			// 	: setIsOpen(false);
-		});
-	}, [scrollYProgress]);
+		if (scrollTop >= scrollHeight - clientHeight - 300) {
+			setIsBottom(true);
+		} else {
+			setIsBottom(false);
+		}
+	};
 
 	return (
 		<Fragment>
@@ -33,17 +33,22 @@ const Home: NextPage = () => {
 					name="description"
 					content="This site created for learning NextJS."
 				/>
+				<meta
+					name="viewport"
+					content="width=device-width, initial-scale=1.0"
+				></meta>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Menu />
 			<Header />
 
-			<main role="main" ref={ref}>
+			<main role="main" ref={scrollContainer} onScroll={onScroll}>
 				{imageHome.map((image, index) => (
-					<Section key={index} imageBg={image} />
+					<Section key={index} imageBg={image} title={title[index]?.title} />
 				))}
 			</main>
-			<Footer />
+
+			<Footer touchBottom={isBottom} />
 		</Fragment>
 	);
 };

@@ -13,14 +13,16 @@ html {
 	-webkit-text-size-adjust: 100%;
 	block-size: -webkit-fill-available;
 	overflow: hidden;
+	// scroll-behavior: smooth;
 }
 
 body {
 	color: var(--cl--grey10);
 	font-family: var(--ff--main);
 	font-weight: var(--fw--regular);
-	font-size: var(--fs--14);
+	@include clamp-cal(100rem, 192rem, 1.2rem, 1.4rem);
 	line-height: var(--lh--20);
+	letter-spacing: 0.05rem;
 }
 
 main {
