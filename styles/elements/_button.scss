@@ -11,4 +11,11 @@ button {
 		background-color: var(--cl--grey20);
 		color: var(--cl--white);
 	}
+
+	@media screen and (max-width: $mq-lg) {
+		margin-bottom: 1.5rem;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }

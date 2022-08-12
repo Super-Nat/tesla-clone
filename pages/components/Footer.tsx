@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import NavbarList from "./NavbarList";
 import { useAppSelector } from "../../hooks/typeHook";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 
 const Footer = (props: any) => {
 	const footerNav = useAppSelector((state) => state.footer.footerNav);
+	const [touchBottom, setTouchBottom] = useState(false);
+	const { scrollY } = useScroll();
 
 	const footer = {
 		hidden: { opacity: 0 },
@@ -12,11 +14,24 @@ const Footer = (props: any) => {
 		exit: { opacity: 0 },
 	};
 
-	// console.log(props.touchBottom);
+	useEffect(() => {
+		return scrollY.onChange((latest) => {
+			if (
+				latest >
+				document.documentElement.scrollHeight - window.innerHeight - 450
+			) {
+				setTouchBottom(true);
+			} else {
+				setTouchBottom(false);
+			}
+
+			console.log(document.documentElement.scrollHeight - window.innerHeight);
+		});
+	});
 
 	return (
 		<>
-			{props.touchBottom && (
+			{touchBottom && (
 				<motion.footer
 					variants={footer}
 					initial="hidden"

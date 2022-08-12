@@ -17,10 +17,6 @@ interface props {
 	};
 }
 const Section: React.FC<props> = (props) => {
-	const ref = useRef(null);
-	// const { scrollYProgress } = useScroll({
-	// 	target: ref,
-	// });
 	const sectionVariants: Variants = {
 		offscreen: {
 			opacity: 0,
