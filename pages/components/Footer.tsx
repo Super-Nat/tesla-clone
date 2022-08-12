@@ -24,8 +24,6 @@ const Footer = (props: any) => {
 			} else {
 				setTouchBottom(false);
 			}
-
-			console.log(document.documentElement.scrollHeight - window.innerHeight);
 		});
 	});
 

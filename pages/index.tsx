@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -12,7 +11,6 @@ import { useAppSelector } from "../hooks/typeHook";
 const Home: NextPage = () => {
 	const imageHome = useAppSelector((state) => state.image.home);
 	const page = useAppSelector((state) => state.page.page);
-	const [isBottom, setIsBottom] = useState(false);
 
 	return (
 		<>
@@ -37,7 +35,7 @@ const Home: NextPage = () => {
 				))}
 			</main>
 
-			<Footer touchBottom={isBottom} />
+			<Footer />
 		</>
 	);
 };

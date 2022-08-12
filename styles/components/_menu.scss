@@ -20,4 +20,32 @@
 		background-color: #fff;
 		box-shadow: var(--sh-large);
 	}
+	&__header {
+		display: flex;
+		justify-content: flex-end;
+	}
+	&__close {
+		width: 4rem;
+		height: 4rem;
+		margin: 2rem 1rem;
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
+		border-radius: 50%;
+		background-color: transparent;
+		padding: 1rem;
+		&:hover {
+			background-color: rgba(#ccc, 0.3);
+		}
+	}
+	&__content {
+		ul {
+			padding-left: 4.2rem;
+			li {
+				margin-bottom: 2rem;
+				a {
+					font-weight: var(--fw--medium);
+				}
+			}
+		}
+	}
 }
